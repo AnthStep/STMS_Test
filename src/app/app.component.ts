@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MockService } from './mock/mock.service';
+import { MockBackend } from '@angular/http/testing';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: '<router-outlet></router-outlet>'
 })
 export class AppComponent {
-  title = 'app';
+  constructor(private http: HttpClient, private mock: MockBackend){
+    this.mock.connections.subscribe(connection => {
+      console.log(connection);
+    })
+  }
 }
