@@ -78,3 +78,12 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+Object.defineProperty(document.body.style, 'transform', {
+    value: () => {
+      return {
+        enumerable: true,
+        configurable: true
+      };
+    },
+  });

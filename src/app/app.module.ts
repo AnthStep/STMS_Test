@@ -6,6 +6,11 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRouterModule } from './app-router.module';
 import { Http, BaseRequestOptions } from '@angular/http';
+import { MockService } from './mock/mock.service';
+import { StateService } from './shared/state.service';
+import { AuthGuard } from './guard/auth.guard';
+import { PublicGuard } from './guard/public.guard';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,12 +18,18 @@ import { Http, BaseRequestOptions } from '@angular/http';
   ],
   imports: [
     BrowserModule,
+    NoopAnimationsModule,
+    BrowserAnimationsModule,
     RouterModule,
     AppRouterModule,
     HttpClientModule
   ],
   providers: [
+    AuthGuard,
+    PublicGuard,
+    MockService,
     MockBackend,
+    StateService,
     BaseRequestOptions,
     {
       provide: HttpClient,
