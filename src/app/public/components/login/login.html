@@ -1,0 +1,14 @@
+<div class="login-wrapper">
+    <div class="login-card">
+        <h3 class="login-header">Login</h3>
+        <form (ngSubmit)="loginSubmit()" [formGroup]="credGroup">
+            <label [ngClass]="{'error': username.invalid && username.touched}" class="stms-form">
+                <input placeholder="Username" formControlName="username" type="text" class="stms-form-input">
+            </label>
+            <label [ngClass]="{'error': password.invalid && password.touched}"  class="stms-form">
+                <input placeholder="Password" autocomplete="new-password" formControlName="password" type="password" class="stms-form-input">
+            </label>
+            <button [disabled]="credGroup.invalid" type="submit" class="stms-submit stms-btn">Let me in.</button>
+        </form>
+    </div>
+</div>

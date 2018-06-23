@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { MockService } from './mock/mock.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: '<router-outlet></router-outlet>'
 })
 export class AppComponent {
-  title = 'app';
+  constructor(private mockService: MockService){
+    this.mockService.initMock();
+  }
 }
