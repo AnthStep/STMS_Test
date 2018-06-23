@@ -8,6 +8,6 @@ export class LoginService{
 
     public authenticate({username,password}){
         const token = btoa(username + password);
-        return this.http.post('authenticate', {token}).pipe(map((val: any) => val._body));
+        return this.http.post('authenticate', {token,username}).pipe(map((val: any) => val._body));
     }
 }

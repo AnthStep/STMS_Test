@@ -1,5 +1,16 @@
-<stms-authenticated-header></stms-authenticated-header>
+<div class="auth-wrapper">
+    <stms-authenticated-header></stms-authenticated-header>
 
-<div *welcomeTimer="3500" class="auth-message-wrapper" [@welcomeAnimation]>
+    <div class="auth-dragged-content">
+        <img class="auth-avatar" (positionChange)="changeAvatarPosition($event)" [dragable]="userInfo.avatarPos" [src]="'https://api.adorable.io/avatars/200/' + userInfo.username + '.png'" />
+        <div class="auth-username" (positionChange)="changeUsernamePosition($event)" [dragable]="userInfo.usernamePos"  >{{userInfo.username|uppercase}}</div>
+    </div>
+</div>
+
+
+<div *removeTimer="1700" class="auth-message-wrapper" [@welcomeAnimation]>
     <div class="auth-message">Welcome !!!</div>
 </div>
+
+
+

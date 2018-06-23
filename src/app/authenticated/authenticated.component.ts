@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { trigger, transition, style, animate } from "@angular/animations";
+import { UserService } from "./services/user.service";
+import { User } from "./models/user.model";
 
 @Component({
     selector: 'stms-authenticated',
@@ -18,15 +20,19 @@ import { trigger, transition, style, animate } from "@angular/animations";
         ])
     ]
 })
-export class AuthenticatedComponent implements OnInit{
-    public showWelcome: boolean;
+export class AuthenticatedComponent{
+    private userInfo: User;
 
-    constructor(){}
-
-    public ngOnInit(){
-        this.showWelcome = true;
-        setTimeout(()=>{
-            this.showWelcome = false;
-        }, 3000);
+    constructor(private userService: UserService){
+        this.userInfo = this.userService.userData;
     }
+
+    public changeAvatarPosition(avatarPos){
+        this.userService.updateUser({avatarPos});
+    }
+
+    public changeUsernamePosition(usernamePos){
+        this.userService.updateUser({usernamePos});
+    }
+
 }

@@ -20,15 +20,32 @@ export class MockService{
         if(connection.request.url === 'authenticate'){
             const body = JSON.parse(connection.request.getBody());
             const token = body.token;
+            const username = body.username;
 
             if(token){
                 const authToken: any = btoa(token);
+                if(!localStorage.getItem(authToken)){
+                    localStorage.setItem(authToken, JSON.stringify({username}))
+                }                
                 connection.mockRespond(new Response(new ResponseOptions({
                     body: {authToken}
                 })));
             }else{
                 connection.mockError(new Error('No token provided'));
             }
+        }
+        if(connection.request.url === 'getUser'){
+            const token = JSON.parse(connection.request.getBody()).userToken;
+            const user = JSON.parse(localStorage.getItem(token));
+            connection.mockRespond(new Response(new ResponseOptions({
+                body: user
+            })))
+        }
+        if(connection.request.url == 'putUser'){
+            const user = JSON.parse(connection.request.getBody()).user;
+            const token = JSON.parse(connection.request.getBody()).userToken;
+            localStorage.setItem(token, JSON.stringify(user));
+            connection.mockRespond(new Response(new ResponseOptions()));
         }
     }
 

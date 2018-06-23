@@ -1,11 +1,13 @@
 import { Routes, RouterModule } from '@angular/router'
 import { NgModule } from '@angular/core';
 import { AuthenticatedComponent } from './authenticated.component';
+import { UserService } from './services/user.service';
 
 const routes: Routes = [
     {
         path: '',
-        component: AuthenticatedComponent
+        component: AuthenticatedComponent,
+        resolve: [UserService]
     }
 ]
 

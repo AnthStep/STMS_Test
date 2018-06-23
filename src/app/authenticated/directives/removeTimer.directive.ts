@@ -1,11 +1,11 @@
-import { Directive, ViewContainerRef, Input, TemplateRef, HostListener } from "@angular/core";
+import { Directive, ViewContainerRef, Input, TemplateRef} from "@angular/core";
 
 @Directive({
-    selector: '[welcomeTimer]'
+    selector: '[removeTimer]'
 })
-export class WelcomeTimerDirective{
+export class RemoveTimerDirective{
 
-    @Input() public set welcomeTimer(val){
+    @Input() public set removeTimer(val){
         const time = Number(val);
         setTimeout(()=>{
             this._clearView();

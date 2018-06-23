@@ -3,7 +3,9 @@ import { HeaderComponent } from "./components/header/header.component";
 import { AuthenticatedComponent } from "./authenticated.component";
 import { AuthenticatedRouterModule } from "./authenticated-router.module";
 import { CommonModule } from "@angular/common";
-import { WelcomeTimerDirective } from "./directives/welcome.directive";
+import { RemoveTimerDirective } from "./directives/removeTimer.directive";
+import { DragableDirective } from "./directives/dragable.directive";
+import { UserService } from "./services/user.service";
 
 @NgModule({
     imports: [
@@ -13,8 +15,11 @@ import { WelcomeTimerDirective } from "./directives/welcome.directive";
     declarations: [
         HeaderComponent,
         AuthenticatedComponent,
-        WelcomeTimerDirective
+        RemoveTimerDirective,
+        DragableDirective
     ],
-    providers: []
+    providers: [
+        UserService
+    ]
 })
 export class AuthenticatedModule { }
